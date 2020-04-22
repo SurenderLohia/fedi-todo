@@ -1,18 +1,18 @@
 const categories = [
   {
-    id: htmlCss,
+    id: "htmlCss",
     name: 'HTML & CSS'
   },
   {
-    id: javaScript,
+    id: "javaScript",
     name: 'JavaScript'
   },
   {
-    id: dataStructureAlgorithm,
+    id: "dataStructureAlgorithm",
     name: 'Data Structure & Algorithm'
   },
   {
-    id: frontEndTopics,
+    id: "frontEndTopics",
     name: 'Front-End Topics'
   }
 ];

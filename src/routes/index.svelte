@@ -1,3 +1,13 @@
+<script>
+	import { onMount } from 'svelte';
+	
+	import addData from './_helpers/add-data.js';
+
+	onMount(() => {
+		addData();
+	});
+</script>
+
 <svelte:head>
 	<title>Fedi-Todo</title>
 </svelte:head>
