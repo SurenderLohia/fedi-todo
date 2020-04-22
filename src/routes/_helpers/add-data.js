@@ -36,8 +36,8 @@ async function addData() {
     }
   });
 
-  console.log(await db.getAll(TODO_LIST));
-  console.log(await db.getAll(CATEGORIES));
+  // console.log(await db.getAll(TODO_LIST));
+  // console.log(await db.getAll(CATEGORIES));
 }
 
 export default addData;

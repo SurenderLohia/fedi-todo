@@ -2,9 +2,15 @@
 	import { onMount } from 'svelte';
 	
 	import addData from './_helpers/add-data.js';
+	import { getTodoList, getCategories } from './_helpers/db-api.js';
 
-	onMount(() => {
+	onMount(async () => {
 		addData();
+		const todoList = await getTodoList();
+		const categories = await getCategories();
+
+		console.log(todoList);
+		console.log(categories);
 	});
 </script>
 
