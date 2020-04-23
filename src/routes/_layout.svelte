@@ -1,5 +1,5 @@
 <style lang="scss" global>
-	@import './style/global.scss';
+	@import './_style/main.scss';
 </style>
 
 <main>

@@ -1,0 +1,21 @@
+@import './variables.scss';
+
+.wrap {
+ max-width: $max-width;
+ padding: 0 1rem;
+ margin: 0 auto;
+}
+
+.header {
+  @extend .pt2;
+  @extend .pb2;
+
+  background-color: $primary-color-text;
+  color: $primary-text-color;
+}
+
+body {
+  background-color: $primary-color;
+  color: $primary-color-text;
+}
+
