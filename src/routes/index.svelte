@@ -4,13 +4,17 @@
 	import addData from './_helpers/add-data.js';
 	import { getTodoList, getCategories } from './_helpers/db-api.js';
 
+	let todoList = [];
+	let categories = [];
+
+	function getItemsByCategory(list, category) {
+		return list.filter(item => item.category === category.id)
+	}
+
 	onMount(async () => {
 		addData();
-		const todoList = await getTodoList();
-		const categories = await getCategories();
-
-		console.log(todoList);
-		console.log(categories);
+		todoList = await getTodoList();
+		categories = await getCategories();
 	});
 </script>
 
@@ -25,35 +29,30 @@
 			<h3 class="h3 secondary-text-color">Front-end Developer Interview Todo List</h3>
 		</div>
 	</header>
-	<div class="todo">
-		<div class="todo-header">
-			<div class="wrap">
-				<label class="checkbox-label">
-					<input id="3" type="checkbox">
-					<span class="checkbox-custom rectangular"></span>
-				</label>
-				<label for="3" class="todo-title">HTML & CSS</label>
+	{#each categories as category }
+		<div class="todo" key={category.id}>
+			<div class="todo-header">
+				<div class="wrap">
+					<label class="checkbox-label">
+						<input id={category.id} type="checkbox">
+						<span class="checkbox-custom rectangular"></span>
+					</label>
+					<label for={category.id} class="todo-title">{category.name}</label>
+				</div>
 			</div>
+			<ul class="todo-list">
+			{#each getItemsByCategory(todoList, category) as todoItem}
+				<li class="todo-item">
+					<label class="checkbox-label">
+						<input id={todoItem.id} type="checkbox">
+						<span class="checkbox-custom rectangular"></span>
+					</label>
+					<label for={todoItem.id} class="todo-item-text">
+						{todoItem.text}
+					</label>
+				</li>
+			{/each}
+			</ul>
 		</div>
-		<ul class="todo-list">
-			<li class="todo-item">
-				<label class="checkbox-label">
-					<input id="1" type="checkbox">
-					<span class="checkbox-custom rectangular"></span>
-				</label>
-				<label for="1" class="todo-item-text">
-					Semantic HTML
-				</label>
-			</li>
-			<li class="todo-item">
-				<label class="checkbox-label">
-					<input id="2" type="checkbox">
-					<span class="checkbox-custom rectangular"></span>
-				</label>
-				<label for="2" class="todo-item-text">
-					CSS Pre-Processors
-				</label>
-			</li>
-		</ul>
-	</div>
+	{/each}
 </div>

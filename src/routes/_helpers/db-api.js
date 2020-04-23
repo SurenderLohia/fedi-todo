@@ -9,7 +9,7 @@ async function getTodoList() {
 
 async function getCategories() {
   const db = await openDB(DB_NAME, 1);
-  const categories = await db.getAll(CATEGORIES);
+  const categories = await db.getAllFromIndex(CATEGORIES, 'order');
   return categories;
 }
 
