@@ -16,8 +16,9 @@ async function addData() {
       });
 
       todoListStore.createIndex('done', 'done');
-      categoryStore.createIndex('category', 'category');
+      todoListStore.createIndex('category', 'category');
 
+      categoryStore.createIndex('category', 'category');
       categoryStore.createIndex('order', 'order');
       
       todoListStore.transaction.oncomplete = async function(event) {

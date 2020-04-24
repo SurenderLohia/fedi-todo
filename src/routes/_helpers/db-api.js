@@ -14,18 +14,20 @@ async function getCategories() {
 }
 
 async function updateTodoDoneState(options) {
-  const { key, value } = options;
+  const { key, value, isChecked } = options;
   const db = await openDB(DB_NAME, 1);
   const tx = db.transaction(TODO_LIST, 'readwrite');
   let index;
   
   if(key === 'id') {
     index = tx.store;
+  } else {
+    index = tx.store.index(key);
   }
 
   for await (const cursor of index.iterate(value)) {
     const todoItem = { ...cursor.value };
-    todoItem.done = value;
+    todoItem.done = isChecked;
     cursor.update(todoItem);
   }
 
