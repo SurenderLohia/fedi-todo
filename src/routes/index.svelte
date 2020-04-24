@@ -33,24 +33,13 @@
 		const target = event.target;
 		const isChecked = event.target.checked;
 
-		// const newTodoList = [...todoList];
+		todoList.forEach((todoItem, index) => {
+			if(todoItem.category === categoryId) {
+				todoList[index].done = isChecked;
+			}
+		});
 
-		// newTodoList.map(item => {
-		// 	if(item.category === categoryId) {
-		// 		let newItem = {...item};
-		// 		newItem.done = isChecked;
-
-		// 		return newItem;
-		// 	}
-
-		// 	return item;
-		// });
-
-		// todoList = newTodoList;
-
-		// console.log(todoList);
-
-		// call indexeddb update api
+		// update indexeddb
 		const options = {
 			key: 'category',
 			value: categoryId,
@@ -85,7 +74,7 @@
 			<div class="todo-header">
 				<div class="wrap">
 					<label class="checkbox-label">
-						<input id={category.id} type="checkbox" on:change={(e) => toggleAllTodoItems(e, category.id)}>
+						<input id={category.id} type="checkbox" on:change={(e) => toggleAllTodoItems(e, category.id)} checked={getItemsByCategory(todoList, category.id).every(todoItem => todoItem.done)}>
 						<span class="checkbox-custom rectangular"></span>
 					</label>
 					<label for={category.id} class="todo-title">{category.name}</label>
