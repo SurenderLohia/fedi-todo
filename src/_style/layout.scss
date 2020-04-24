@@ -6,7 +6,8 @@
  margin: 0 auto;
 }
 
-.header {
+.header,
+.footer {
   @extend .pt2;
   @extend .pb2;
 

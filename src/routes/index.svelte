@@ -1,5 +1,12 @@
+<style lang="scss" global>
+	@import './_style/main.scss';
+</style>
 <script>
 	import { onMount } from 'svelte';
+
+	import Header from '../components/Header.svelte';
+	import Footer from '../components/Footer.svelte';
+	import GithubCorner from '../components/GithubCorner.svelte';
 	
 	import addData from './_helpers/add-data.js';
 	import { getTodoList,
@@ -76,12 +83,8 @@
 </svelte:head>
 
 <div>
-	<header class="header">
-		<div class="wrap">
-			<h1 class="h1">Fedi-Todo</h1>
-			<h3 class="h3 secondary-text-color">Front-end Developer Interview Todo List</h3>
-		</div>
-	</header>
+	<GithubCorner />
+	<Header />
 	{#each categories as category }
 		<div class="todo" key={category.id}>
 			<!-- Todo Header -->
@@ -111,4 +114,5 @@
 			</ul>
 		</div>
 	{/each}
+	<Footer />
 </div>
