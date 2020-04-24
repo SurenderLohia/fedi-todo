@@ -13,4 +13,27 @@ async function getCategories() {
   return categories;
 }
 
-export { getTodoList, getCategories };
+async function updateTodoDoneState(options) {
+  const { key, value } = options;
+  const db = await openDB(DB_NAME, 1);
+  const tx = db.transaction(TODO_LIST, 'readwrite');
+  let index;
+  
+  if(key === 'id') {
+    index = tx.store;
+  }
+
+  for await (const cursor of index.iterate(value)) {
+    const todoItem = { ...cursor.value };
+    todoItem.done = value;
+    cursor.update(todoItem);
+  }
+
+  await tx.done;
+}
+
+export { 
+  getTodoList, 
+  getCategories,
+  updateTodoDoneState
+};

@@ -2,7 +2,10 @@
 	import { onMount } from 'svelte';
 	
 	import addData from './_helpers/add-data.js';
-	import { getTodoList, getCategories } from './_helpers/db-api.js';
+	import { getTodoList,
+		getCategories, 
+		updateTodoDoneState 
+	} from './_helpers/db-api.js';
 
 	let todoList = [];
 	let categories = [];
@@ -17,6 +20,12 @@
 		const isChecked = event.target.checked;
 		
 		// call indexeddb update api
+		const options = {
+			key: 'id',
+			value: id
+		}
+
+		updateTodoDoneState(options);
 	}
 
 	onMount(async () => {
