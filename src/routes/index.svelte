@@ -95,7 +95,7 @@
 						<span class="checkbox-custom rectangular"></span>
 					</label>
 					<label for={category.id} class="todo-title">{category.name}</label>
-					<span class="status">{getItemsByCategory(todoList, category.id).filter(todoItem => !todoItem.done).length} Items left</span>
+					<span class="todo-status">{getItemsByCategory(todoList, category.id).filter(todoItem => !todoItem.done).length} Items left</span>
 				</div>
 			</div>
 			<!-- Todo List -->

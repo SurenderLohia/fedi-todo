@@ -10,6 +10,10 @@
   color: $primary-color-text;
 }
 
+.todo-status {
+  @extend .primary-color-light;
+}
+
 .todo-title {
   @extend .h2;
   display: inline-block;
