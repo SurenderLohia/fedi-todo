@@ -49,6 +49,21 @@
 		updateTodoDoneState(options);
 	}
 
+	function getTodoStatus(categoryId) {
+		const filteredTodoItems = getItemsByCategory(todoList, categoryId);
+		const remainigTodoItemsCount = filteredTodoItems.filter(todoItem => !todoItem.done).length;
+
+		let statusText;
+		if(remainigTodoItemsCount === 1) {
+			statusText = 'item left'
+		} else {
+			statusText = 'items left'
+		}
+		
+
+		return `${remainigTodoItemsCount} ${statusText}`;
+	}
+
 	onMount(async () => {
 		addData();
 		todoList = await getTodoList();
@@ -65,7 +80,6 @@
 		<div class="wrap">
 			<h1 class="h1">Fedi-Todo</h1>
 			<h3 class="h3 secondary-text-color">Front-end Developer Interview Todo List</h3>
-			<h5>Completed items {todoList.filter(item => item.done).length}</h5>
 		</div>
 	</header>
 	{#each categories as category }
@@ -78,6 +92,7 @@
 						<span class="checkbox-custom rectangular"></span>
 					</label>
 					<label for={category.id} class="todo-title">{category.name}</label>
+					<span class="status">{getItemsByCategory(todoList, category.id).filter(todoItem => !todoItem.done).length} Items left</span>
 				</div>
 			</div>
 			<!-- Todo List -->
