@@ -1,10 +1,10 @@
 {
 	"background_color": "#ffffff",
-	"theme_color": "#333333",
-	"name": "TODO",
-	"short_name": "TODO",
+	"theme_color": "#673AB7",
+	"name": "Fedi-Todo",
+	"short_name": "Fedi-Todo",
 	"display": "minimal-ui",
-	"start_url": "/",
+	"start_url": "/fedi-todo",
 	"icons": [
 		{
 			"src": "logo-192.png",
