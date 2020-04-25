@@ -53,7 +53,7 @@ self.addEventListener('fetch', event => {
 	// app, but if it's right for yours then uncomment this section
 	
 	if (url.origin === self.origin && routes.find(route => route.pattern.test(url.pathname))) {
-		event.respondWith(caches.match('service-worker-index.html'));
+		event.respondWith(caches.match('/service-worker-index.html'));
 		return;
 	}
 	
