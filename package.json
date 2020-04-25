@@ -2,6 +2,7 @@
   "name": "fedi-todo",
   "description": "Front-end Developer Interview Todo List",
   "version": "0.0.1",
+  "homepage": "http://surenderlohia.github.io/fedi-todo",
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
