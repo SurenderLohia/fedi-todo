@@ -2,8 +2,9 @@
 	"background_color": "#ffffff",
 	"theme_color": "#673AB7",
 	"name": "Fedi-Todo",
+	"description": "Front-end Developer Interview Todo List",
 	"short_name": "Fedi-Todo",
-	"display": "minimal-ui",
+	"display": "standalone",
 	"start_url": "/fedi-todo",
 	"icons": [
 		{
