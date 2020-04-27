@@ -5,7 +5,7 @@
 	"description": "Front-end Developer Interview Todo List",
 	"short_name": "Fedi-Todo",
 	"display": "standalone",
-	"start_url": "/fedi-todo",
+	"start_url": "/",
 	"icons": [
 		{
 			"src": "logo-192.png",
