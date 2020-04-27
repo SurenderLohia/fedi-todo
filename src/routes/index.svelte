@@ -3,12 +3,12 @@
 </style>
 <script>
 	import { onMount } from 'svelte';
-	import Spinner from 'svelte-spinner';
 	import { fade } from 'svelte/transition';
 
 	import Header from '../components/Header.svelte';
 	import Footer from '../components/Footer.svelte';
 	import GithubCorner from '../components/GithubCorner.svelte';
+	import Loader from '../components/Loader.svelte';
 	
 	import addData from './_helpers/add-data.js';
 	import { getTodoList,
@@ -90,13 +90,7 @@
 	<div class="main-content">
 	{#if todoList.length === 0 && categories.length === 0}
 		<div class="loader-container">
-			<Spinner
-				size="50"
-				speed="750"
-				color="#fff"
-				thickness="2"
-				gap="40"
-			/>
+			<Loader />
 		</div>
 	{:else}
 		{#each categories as category }
