@@ -20,3 +20,15 @@ body {
   color: $primary-color-text;
 }
 
+.loader-container {
+  @extend .wrap;
+  
+  @extend .flex;
+  @extend .items-center;
+  @extend .justify-center;
+}
+
+.main-content {
+  min-height: 100vh;
+}
+

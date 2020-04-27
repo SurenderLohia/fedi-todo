@@ -3,6 +3,8 @@
 </style>
 <script>
 	import { onMount } from 'svelte';
+	import Spinner from 'svelte-spinner';
+	import { fade } from 'svelte/transition';
 
 	import Header from '../components/Header.svelte';
 	import Footer from '../components/Footer.svelte';
@@ -85,34 +87,48 @@
 <div>
 	<GithubCorner />
 	<Header />
-	{#each categories as category }
-		<div class="todo" key={category.id}>
-			<!-- Todo Header -->
-			<div class="todo-header">
-				<div class="wrap">
-					<label class="checkbox-label">
-						<input id={category.id} type="checkbox" on:change={(e) => toggleAllTodoItems(e, category.id)} checked={getItemsByCategory(todoList, category.id).every(todoItem => todoItem.done)}>
-						<span class="checkbox-custom rectangular"></span>
-					</label>
-					<label for={category.id} class="todo-title">{category.name}</label>
-					<span class="todo-status">{getItemsByCategory(todoList, category.id).filter(todoItem => !todoItem.done).length} Items left</span>
-				</div>
-			</div>
-			<!-- Todo List -->
-			<ul class="todo-list">
-			{#each getItemsByCategory(todoList, category.id) as todoItem}
-				<li class="todo-item">
-					<label class="checkbox-label">
-						<input id={todoItem.id} type="checkbox" on:change={(e) => toggleTodoItem(e, todoItem.id)} bind:checked={todoItem.done}>
-						<span class="checkbox-custom rectangular"></span>
-					</label>
-					<label for={todoItem.id} class="todo-item-text">
-						{todoItem.text}
-					</label>
-				</li>
-			{/each}
-			</ul>
+	<div class="main-content">
+	{#if todoList.length === 0 && categories.length === 0}
+		<div class="loader-container">
+			<Spinner
+				size="50"
+				speed="750"
+				color="#fff"
+				thickness="2"
+				gap="40"
+			/>
 		</div>
-	{/each}
+	{:else}
+		{#each categories as category }
+			<div class="todo" key={category.id}>
+				<!-- Todo Header -->
+				<div class="todo-header">
+					<div class="wrap">
+						<label class="checkbox-label">
+							<input id={category.id} type="checkbox" on:change={(e) => toggleAllTodoItems(e, category.id)} checked={getItemsByCategory(todoList, category.id).every(todoItem => todoItem.done)}>
+							<span class="checkbox-custom rectangular"></span>
+						</label>
+						<label for={category.id} class="todo-title">{category.name}</label>
+						<span class="todo-status">{getItemsByCategory(todoList, category.id).filter(todoItem => !todoItem.done).length} Items left</span>
+					</div>
+				</div>
+				<!-- Todo List -->
+				<ul class="todo-list">
+				{#each getItemsByCategory(todoList, category.id) as todoItem}
+					<li class="todo-item">
+						<label class="checkbox-label">
+							<input id={todoItem.id} type="checkbox" on:change={(e) => toggleTodoItem(e, todoItem.id)} bind:checked={todoItem.done}>
+							<span class="checkbox-custom rectangular"></span>
+						</label>
+						<label for={todoItem.id} class="todo-item-text">
+							{todoItem.text}
+						</label>
+					</li>
+				{/each}
+				</ul>
+			</div>
+		{/each}
+	{/if}
+	</div>
 	<Footer />
 </div>
