@@ -1,3 +1,9 @@
+<style>
+  .licence {
+    display: inline-block;
+    margin-right: 5px;
+  }
+</style>
 <script>
   import StackShare from './StackShare.svelte';
 </script>
@@ -9,7 +15,7 @@
       by
       <a href="https://www.surender.net/">Surender Lohia</a>
       under
-      <a href="https://surender.mit-license.org/">MIT licence</a>
+      <a class="licence" href="https://surender.mit-license.org/">MIT licence</a>
       <StackShare />
     </p>
   </div>

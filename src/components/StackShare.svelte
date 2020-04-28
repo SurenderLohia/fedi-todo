@@ -3,7 +3,6 @@
     position: relative;
     top: 3px;
     display: inline-block;
-    margin-left: 5px;
   }
 </style>
 
