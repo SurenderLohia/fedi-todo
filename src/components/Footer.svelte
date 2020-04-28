@@ -1,3 +1,6 @@
+<script>
+  import StackShare from './StackShare.svelte';
+</script>
 <div class="footer">
   <div class="wrap">
     <p class="secondary-text-color">
@@ -7,6 +10,7 @@
       <a href="https://www.surender.net/">Surender Lohia</a>
       under
       <a href="https://surender.mit-license.org/">MIT licence</a>
+      <StackShare />
     </p>
   </div>
 </div>
